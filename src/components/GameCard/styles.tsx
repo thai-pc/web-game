@@ -25,6 +25,8 @@ export const Title = styled.h2`
   margin: 0;
   font-size: 2.4rem;
   color: ${primaryTextColor};
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const Details = styled.div`
