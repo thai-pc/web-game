@@ -1,13 +1,19 @@
-import React, { ReactElement } from 'react';
+import React, { ChangeEvent, ReactElement } from 'react';
 import GameCard from '../GameCard';
 import { Game } from '../../types';
 import { List, ListItem } from './styles';
+import GameFilter from '../GameFilter';
 interface Props {
   err?: string;
   games: Game[];
+  onFilterChange: (e: ChangeEvent<HTMLFormElement>) => void;
 }
 
-const GameListRender = ({ err, games }: Props): ReactElement => {
+const GameListRender = ({
+  err,
+  games,
+  onFilterChange,
+}: Props): ReactElement => {
   if (err) {
     return <p>Unable to fetch games</p>;
   }
@@ -15,15 +21,18 @@ const GameListRender = ({ err, games }: Props): ReactElement => {
     return <p>No games available</p>;
   }
   return (
-    <List>
-      {games.map((game) => {
-        return (
-          <ListItem key={game.id}>
-            <GameCard content={game} />
-          </ListItem>
-        );
-      })}
-    </List>
+    <>
+      <GameFilter onChange={onFilterChange} />
+      <List>
+        {games.map((game) => {
+          return (
+            <ListItem key={game.id}>
+              <GameCard content={game} />
+            </ListItem>
+          );
+        })}
+      </List>
+    </>
   );
 };
 
