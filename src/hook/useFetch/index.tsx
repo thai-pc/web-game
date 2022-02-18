@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, ChangeEvent } from 'react';
+import { useState, useEffect } from 'react';
 import { Game } from '../../types';
 import { Filter } from '../../components/GameList/types';
 import { API_HOST, API_KEY } from './constants';
